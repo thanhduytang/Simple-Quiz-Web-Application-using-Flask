@@ -4,17 +4,29 @@ body {
     color: #333D46;
     font-family: 'Gotu', sans-serif;
     overflow: auto;
-    padding: 100px auto;
+}
+
+hr { 
+    border: 1px solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* Title */
 .title {
+    background-image: url(images/covid19.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+}
+
+.title-font {
     color: #556A7F;
     font-size: 250%;
     text-align: center;
 }
 
-.subtitle {
+.subtitle-font {
     color: #687480;
     text-align: center;
 }

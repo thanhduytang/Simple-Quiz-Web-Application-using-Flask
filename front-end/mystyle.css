@@ -1,0 +1,56 @@
+/* Basic */
+body {
+    background-color: #C4C5C7;
+    color: #333D46;
+    font-family: 'Gotu', sans-serif;
+    overflow: auto;
+    padding: 100px auto;
+}
+
+/* Title */
+.title {
+    color: #556A7F;
+    font-size: 250%;
+    text-align: center;
+}
+
+.subtitle {
+    color: #687480;
+    text-align: center;
+}
+
+/* Layout */
+.row:after { /* Clear floats after the columns */
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.column {
+    display: block;
+    float: left;
+    padding: 20px;
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Buttons */
+a.button {
+    font-size: 150%;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+}
+
+a.button:hover {
+    background-color: #687480;
+}
+a.button:link,
+a.button:visited {
+    color: #333D46;
+}

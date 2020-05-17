@@ -49,6 +49,11 @@ hr {
     text-align: center;
 }
 
+.footer {
+    text-align: center;
+    width: 30%;
+}
+
 /* Buttons */
 a.button {
     font-size: 150%;
@@ -64,5 +69,19 @@ a.button:hover {
 }
 a.button:link,
 a.button:visited {
+    color: #333D46;
+}
+
+/* Link */
+a.resource {
+    text-decoration: none;
+}
+
+a.resource:hover {
+    font-weight: bold;
+}
+
+a.resource:link,
+a.resource:visited {
     color: #333D46;
 }

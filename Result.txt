@@ -8,18 +8,24 @@ if score < 80:insufficient level]
 
 Score for Part 1 is :
 Level is : " "
-
+[if 30 < score <= 40: sufficient level
+if 20 <= score <= 30: Medium level
+if score < 20:insufficient level]
 
 Score of Part 2 is :
 Level is : " "
-
+[if 40 < score <= 50: Sufficient level
+if 30 < score <= 40: Medium level
+if score <= 30:Insufficient level]
 
 
 Score of Part 3 is
 Level is : " "
+[if score = 30: Sufficient level
+if score = 20: Medium level
+if score = 10:Insufficient level]
 
-
-answer check list(##can be table)
+Answer Check list(##can be table)
 Question   Correct Answer Your Answer
 Q1			A
 Q2 			A

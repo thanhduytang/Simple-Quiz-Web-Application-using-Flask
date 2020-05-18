@@ -22,6 +22,7 @@ Q4. How does Corona Virus spread?
 	A. Animal to person
 	B. Person to person
 	C. Corona beer to person
+	D. Food to person
 
 
 Part II. Awareness of protection yourself from COVID-19 (Self-protection)
@@ -30,21 +31,25 @@ Q5. Can washing your hands frequently protect you from COVID-19?
 	A. Yes, but only is you use a strong bleach
 	B. Yes, normal soap and water or hand sanitizer is enough
 	C. No, washing your hands does not stop COVID-19
+	D. No, but using Vodka wash hand can.
 
 Q6. Can wear a mask protect you from COVID-19 when you going outside?
 	A. Yes, wear a mask at all times to prevent COVID -19
 	B. No, You don't need to wear a mask if you are healthy and not caring for a sick person
 	C. No, wearing a mask is a violation of human right
+	D. Yes, but only when going to hospital
 
 Q7. How long do you need to wash hands with soap and water for?
 	A. 10 Seconds
 	B. 15 Seconds
 	C. 20 Seconds
+	D. As long as you can
 	
 Q8.  What is the least percentage of alcohol that a hand sanitizer should contains?
 	A. 30%
 	B. 40%
 	C. 60%
+	D. 99%
 
 Q9. Which of the following is not an effective disinfectant for killing coronavirus?
 	A. Alcohol
@@ -59,6 +64,7 @@ Q10. Can  you always tell if someone has COVID-19?
 	A. NO, not everyone with COVID-19 has symptoms
 	B. Yes, it always obvious since a person with COVID-19 coughs a lot
 	C. Yes, you can just by where a person coms from, their race and ethnicity
+	D. Yes, if someone looks sick
 	
 
 
@@ -66,6 +72,7 @@ Q11. What's the safety social distance between each person?
 	A. 0.9m
 	B. 1.2m
 	C. 1.5m
+	D. 10m
 
 Q12. Select the improper method when you dining at public enviroment?
 	A. Washing hands before having meal

@@ -11,17 +11,16 @@ def load_user(id):
 
 
 class User(UserMixin, db.Model):
-
     id            = db.Column(db.Integer, primary_key=True)
     username      = db.Column(db.String(64), index=True, unique=True)
     email         = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    scores        = db.relationship('Score', backref='candidate', lazy='dynamic')
 
-    score = db.relationship('Score', backref = 'candidate', lazy = 'dynamic')
-
+    
     #Printing out which user is current
     def __repr__(self):
-        return '[Username: {}, Email: {}]'.format(self.username, self.email)
+        return '[Username {}]'.format(self.username)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -32,24 +31,24 @@ class User(UserMixin, db.Model):
 
 
 class Score(db.Model):
-    
-    id = db.Column(db.Integer, primary_key=True)
+    id      = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    score = db.Column(db.Integer, index = True)
+    score   = db.Column(db.Integer)
+    
+    
 
     #Printing out the score of the current user.
     def __repr__(self):
-        return '[Username: {}, Score: {}]'.format(self.User.query.get(self.user_id), self.score)
+        return '[Score {}]'.format(self.score)
 
 class QA(db.Model):
-    
-    id = db.Column(db.Integer, primary_key = True)
+    id       = db.Column(db.Integer, primary_key = True)
     question = db.Column(db.String(256), index = True)
-    option1 = db.Column(db.String(256), index = True)
-    option2 = db.Column(db.String(256), index = True)
-    option3 = db.Column(db.String(256), index = True)
-    option4 = db.Column(db.String(256), index = True)
-    answer = db.Column(db.String(256), index = True)
+    option1  = db.Column(db.String(256), index = True)
+    option2  = db.Column(db.String(256), index = True)
+    option3  = db.Column(db.String(256), index = True)
+    option4  = db.Column(db.String(256), index = True)
+    answer   = db.Column(db.String(256), index = True)
 
     #Printing out the current question.
     def __repr__(self):

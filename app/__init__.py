@@ -6,6 +6,7 @@ from flask_login import LoginManager
 from flask_login import login_required
 
 app=Flask(__name__)
+app.static_folder='static'
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app,db)

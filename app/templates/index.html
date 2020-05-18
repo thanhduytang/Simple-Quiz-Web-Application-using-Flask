@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+        <!--Content-->
+        <div class='row'>
+            <div class='column'>
+                Hi, {{ current_user.username }}!</h1>
+                Here is a platform for checking your knowledge of COVID-19
+                
+                <!--Button-->
+                <div class='center'><a class='button' href='question.html'>Start</a></div>
+            </div>
+        </div>  
 {% endblock %}

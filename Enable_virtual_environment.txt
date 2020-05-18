@@ -15,3 +15,12 @@ pip install flask_login
 pip install flask_wtf
 
 pip install email_validator
+
+
+# initialize database
+
+flask db init
+
+flask db migrate -m 'test tables' (could be any name)
+
+flask db upgrade

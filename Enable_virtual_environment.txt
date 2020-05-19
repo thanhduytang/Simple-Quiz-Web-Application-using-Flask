@@ -1,0 +1,26 @@
+# configure virtual environment
+
+source venv/bin/activate
+
+pip install flask
+
+export FLASK_APP=project2.py
+
+pip install flask-sqlalchemy
+
+pip install flask_migrate
+
+pip install flask_login
+
+pip install flask_wtf
+
+pip install email_validator
+
+
+# initialize database
+
+flask db init
+
+flask db migrate -m 'test tables' (could be any name)
+
+flask db upgrade

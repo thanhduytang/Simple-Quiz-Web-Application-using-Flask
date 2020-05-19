@@ -66,3 +66,8 @@ def register():
         flash('Congratulations, you have successfully registered account.!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+@app.route('/quiz')
+@login_required
+def quiz():
+    return render_template('quiz.html')

@@ -27,45 +27,47 @@
 
         <!--Title-->
         <div class='title'>
-            <h1 class='title-font'>CoVid-19 Survival Guide</h1>
+            <br><h1 class='title-font'>COVID-19 Survival Guide</h1>
             <p class='subtitle-font'>Protect yourself and others - Test your knowledge of COVID-19</p>
         </div>
 
-    <hr>
+        <hr>
 
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-      {% for message in messages %}
-      <li> {{ message }} </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-    
-    {% block content %}{% endblock %}
-
-    <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+        {% for message in messages %}
+        <li> {{ message }} </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         
-    <!--Footer-->
-    <div class='row'>
-        <div class='column footer'>
-            <b>Contact Us</b><br/><br/>
-            Duy Tang: 22803018@student.uwa.edu.au<br/>
-            Eddie Liu: 22781942@student.uwa.edu.au<br/>
-            Jasmine Meng: 22665473@student.uwa.edu.au<br/>
-            Vian Tian: 22593034@student.uwa.edu.au<br/>
+        {% block content %}{% endblock %}
+
+        <hr>
+            
+        <!--Footer-->
+        <div class='row'>
+            <div class='column footer'>
+                <b>Contact Us</b><br/><br/>
+                Duy Tang: <a class='resource underline' href='mailto:22803018@student.uwa.edu.au'>22803018@student.uwa.edu.au</a><br/>
+                Eddie Liu: <a class='resource underline' href='mailto:22781942@student.uwa.edu.au'>22781942@student.uwa.edu.au</a><br/>
+                Jasmine Meng: <a class='resource underline' href='mailto:22665473@student.uwa.edu.au'>22665473@student.uwa.edu.au</a><br/>
+                Vian Tian: <a class='resource underline' href='mailto:22593034@student.uwa.edu.au'>22593034@student.uwa.edu.au</a><br/>
+            </div>
+            <div class='column footer'>
+                <b>Useful Links</b><br/><br/>
+                <a class='resource' href='https://covid-19.wileam.com' target='_blank' title='COVID-19 Updates'>COVID-19 Updates</a><br>
+                <a class='resource' href='https://www.who.int/news-room/campaigns/connecting-the-world-to-combat-coronavirus/healthyathome?gclid=CjwKCAjw5Ij2BRBdEiwA0Frc9fAw4ZkQjQt4A_wZnKcNEzZs2_rjvSqgCGJC0mezF05FWpv-woANvBoCxvIQAvD_BwE' target='_blank' title='Lockdown Tips'>Lockdown Tips</a><br>
+                <a class='resource' href='https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-current-situation-and-case-numbers' target='_blank' title='Tracking COVID-19 Case'>Tracking COVID-19 Case</a><br/>
+            </div>
+            <div class='column footer'>
+                <b>Follow Us</b><br/><br/>
+                <a href='https://github.com/thanhduytang' target='_blank' title='GitHub'>
+                <img src='{{ url_for('static', filename='images/GitHub.png') }}' alt='GitHub logo'></a>
+            </div>           
         </div>
-        <div class='column footer'>
-            <b>Popular Resources</b><br/><br/>
-            <a class='resource' href='https://covid-19.wileam.com' target='_blank' title='CoVid-19 Updates'>CoVid-19 Updates</a>
-        </div>
-        <div class='column footer'>
-            <b>Follow Us</b><br/><br/>
-            <a href='https://github.com/thanhduytang' target='_blank' title='GitHub'>
-            <img src='{{ url_for('static', filename='images/GitHub.png') }}' alt='GitHub logo'></a>
-        </div>           
-    </div>
     
     </body>
 </html>

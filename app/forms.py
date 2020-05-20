@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, IntegerField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
@@ -29,8 +29,20 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different email address.')
 
 class QuizForm(FlaskForm):
-    question = RadioField('Question')
+    question = StringField('Question')
     option1  = RadioField('Option1')
     option2  = RadioField('Option2')
     option3  = RadioField('Option3')
     answer   = RadioField('Answer')
+    submit   = SubmitField('Submit')
+
+
+class EditForm(FlaskForm):
+    question_num  = IntegerField('Please input the question number', validators=[DataRequired()] )
+    question      = StringField('Please input the question')
+    option1       = StringField('Option1 of the question')
+    option2       = StringField('Option2 of the question')
+    option3       = StringField('Option3 of the question')
+    answer        = StringField('Answer of the question')
+    submit        = SubmitField('Edit question')
+    

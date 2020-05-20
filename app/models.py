@@ -20,7 +20,7 @@ class User(UserMixin, db.Model):
     email         = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     scores        = db.relationship('Score', backref = 'candidate', lazy='dynamic')
-
+    is_admin      = db.Column(db.Boolean, nullable=False, default=False)
     
     #Printing out which user is current
     def __repr__(self):
@@ -33,9 +33,9 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return '[Number:{}, username:{}, :{}]'.format(self.id, \
-      self.username, \
-      self.email)
+        return '[Number:{}, username:{}, email:{}]'.format(self.id, \
+        self.username, \
+        self.email)
 
 
 class Score(db.Model):

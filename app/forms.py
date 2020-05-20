@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
@@ -28,3 +28,9 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
+class QuizForm(FlaskForm):
+    question = RadioField('Question')
+    option1  = RadioField('Option1')
+    option2  = RadioField('Option2')
+    option3  = RadioField('Option3')
+    answer   = RadioField('Answer')

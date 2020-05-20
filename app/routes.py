@@ -1,9 +1,10 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, json
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, QuizForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Score, QA
 from werkzeug.urls import url_parse
+from sqlalchemy.sql.expression import func
 
 @app.route('/')
 @app.route('/index')
@@ -67,7 +68,17 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/quiz')
+@app.route('/quiz', methods=['GET', 'POST'])
 @login_required
 def quiz():
-    return render_template('quiz.html')
+    form = QuizForm()
+    pullquest = QA.query.all()
+    pullquest1 = pullquest[0:4]
+    pullquest2 = pullquest[4:9]
+    pullquest3 = pullquest[9:13]
+    return render_template('quiz.html', form = form, pullquest1 =pullquest1, pullquest2=pullquest2, pullquest3 =pullquest3)
+
+@app.route('/result', methods=['GET', 'POST'])
+@login_required
+def result():
+    return render_template('result.html')

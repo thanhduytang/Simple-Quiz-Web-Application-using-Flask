@@ -2,20 +2,17 @@
 
 {% block content %}
         <div class='row'>
-        {% if current_user.scores.all() == [] %}
-
-            <!--Introduction-->
             <div class='column part-left'>
-                Hi, {{ current_user.username }}!
-                Here is a platform for checking your knowledge of COVID-19
 
-        {% else %}
-            <div class='column'>
+                {% if current_user.scores.all() == [] %}
+                        Hi, {{ current_user.username }}!
+                        Here is a platform for checking your knowledge of COVID-19
+                {% else %}
+                        Welcome back {{ current_user.username }}!
+                        You have done the test.
+                {% endif %} 
 
-                Welcome back {{ current_user.username }}!
-                You have done the test.
-        {% endif %}        
-            
+                <!--Introduction-->
                 <h1>Introduction to Quiz</h1>
                 This quiz consists of 3 different parts and 12 questions which counts for 120 marks in total. 
                 Three different parts of quiz will repectively test your knowledge about COVID-19's symptoms, 

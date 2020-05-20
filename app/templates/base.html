@@ -3,7 +3,7 @@
 <html lang='en'>
     <head>
         <meta charset='UTF-8'>
-        <link rel='stylesheet' href='{{ url_for('static', filename='/mystyle.css') }}'>
+        <link rel='stylesheet' href='{{ url_for('static', filename='mystyle.css') }}'>
         <link href="https://fonts.googleapis.com/css2?family=Gotu&display=swap" rel="stylesheet">
         {% if title %}
         <title>{{ title }} Quiz</title>
@@ -21,6 +21,7 @@
             <a class='resource' href="{{ url_for('login') }}" >Login</a> |
             <a class='resource' href="{{ url_for('register') }}" >Register</a>
             {% else %}
+            <a class='resource' href="{{ url_for('editquestion') }}" >Edit Question | </a>
             <a class='resource' href="{{ url_for('logout') }}" >Logout</a>
             {% endif %}
         </div>

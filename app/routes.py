@@ -1,6 +1,6 @@
-from flask import render_template, flash, redirect, url_for, request, abort
+from flask import render_template, flash, redirect, url_for, request, abort, json, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, QuizForm, EditForm
+from app.forms import LoginForm, RegistrationForm, EditForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Score, QA
 from werkzeug.urls import url_parse
@@ -87,6 +87,7 @@ def editquestion():
                          option1 = edit_form.option1.data,
                          option2 = edit_form.option2.data,
                          option3 = edit_form.option3.data,
+                         option4 = edit_form.option4.data,
                          answer  = edit_form.answer.data)
         db.session.add(newquestion)
         db.session.commit()
@@ -94,31 +95,31 @@ def editquestion():
     return render_template('edit.html', form=edit_form, questions=questions)
 
 
-
-
 @app.route('/quiz', methods=['GET', 'POST'])
 @login_required
 def quiz():
-    form = QuizForm()
-    pullquest = QA.query.all()
-    pullquest1 = pullquest[0:4]
-    pullquest2 = pullquest[4:9]
-    pullquest3 = pullquest[9:13]
-    if form.validate_on_submit():
-        return redirect(url_for('info'))
-    else:
-        return render_template('quiz.html', form = form, pullquest1 =pullquest1, pullquest2=pullquest2, pullquest3 =pullquest3)
+    lists=[]
+    len_QA = len(QA.query.all())
+    for i in range(1, len_QA + 1, 1):
+        q_id = QA.query.get(i)
+        quest = {
+                'question': q_id.question,
+                'option1': q_id.option1,
+                'option2': q_id.option2,
+                'option3': q_id.option3,
+                'option4': q_id.option4,
+                'answer' : q_id.answer}
+        lists.append(quest)  
+    return render_template('quiz.html', lists = lists)
 
-
-@app.route('/result', methods=['POST'])
+@app.route('/result', methods=['GET','POST'])
 @login_required
-def info():
-    score=0
-    choices  = QA.query.filter(QA.id).all()
-    for i in range(13):
-        answered = request.args.get('value', i, type=str)
-        if choices[i].answer == answered:
-            score += 10
-            return render_template('result.html', score=score)
-        else:
-            return abort(500)
+def get_score():
+    score = request.get_json()
+    score_user = Score.query.filter_by(user_id = current_user.id).first()
+    score_user = score
+    db.session.add(score_user)
+    db.session.commit()
+    scores = Score.query.filter_by(user_id=current_user.id)
+    return render_template('result.html', score=scores)
+    

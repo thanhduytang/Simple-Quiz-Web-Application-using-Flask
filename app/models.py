@@ -53,9 +53,10 @@ class QA(db.Model):
     option1  = db.Column(db.String(256), index = True)
     option2  = db.Column(db.String(256), index = True)
     option3  = db.Column(db.String(256), index = True)
-    answer   = db.Column(db.String(256), index = True)
+    option4  = db.Column(db.String(256), index = True)
+    answer   = db.Column(db.Integer, index = True)
 
     #Printing out the current question.
     def __repr__(self):
-        return '"question": "{}","option1": "{}", "option2": "{}", "option3": "{}", "answer": "{}"'.format(self.question,\
-         self.option1, self.option2, self.option3, self.answer)
+         return ('{"question": "%s", "option1": "%s", "option2": "%s", "option3": "%s", "option4": "%s", "answer": "%s"}' %
+                 (self.question, self.option1, self.option2, self.option3, self.option4, self.answer))

@@ -1,37 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="quote-block">
-	
-		<form action="/result" method="POST">
-			{{ form.hidden_tag() }}
-		<ol>
-			<h1>Part I. General knowledge of COVID-19 Symptoms</h1>
-		{% for pull in pullquest1 %}
-			<li>{{ pull.question }}</li><br>
-			<input type='radio' value='{{ pull.option1 }}'>{{ pull.option1 }}<br> 
-			<input type='radio' value='{{ pull.option2 }}'>{{ pull.option2 }}<br>
-			<input type='radio' value='{{ pull.option3 }}'>{{ pull.option3 }}<br> 
-			<input type='radio' value='{{ pull.answer }}'>{{ pull.answer }}<br><br> 
-		{% endfor %}
-			<h1> Part II. Awareness of protection yourself from COVID-19 (Self-protection)</h1>
-		{% for pull in pullquest2 %}
-			<li>{{ pull.question }}</li><br>
-			<input type='radio' value='{{ pull.option1 }}'>{{ pull.option1 }}<br> 
-			<input type='radio' value='{{ pull.option2 }}'>{{ pull.option2 }}<br>
-			<input type='radio' value='{{ pull.option3 }}'>{{ pull.option3 }}<br> 
-			<input type='radio' value='{{ pull.answer }}'>{{ pull.answer }}<br><br> 
-		{% endfor %}
-			<h1>Part III. Awareness of other people(Protecting yourself from social activity)</h1>
-			{% for pull in pullquest3 %}
-			<li>{{ pull.question }}</li><br>
-			<input type='radio' value='{{ pull.option1 }}'>{{ pull.option1 }}<br> 
-			<input type='radio' value='{{ pull.option2 }}'>{{ pull.option2 }}<br>
-			<input type='radio' value='{{ pull.option3 }}'>{{ pull.option3 }}<br> 
-			<input type='radio' value='{{ pull.answer }}'>{{ pull.answer }}<br><br> 
-		{% endfor %}
-		</ol>
-		{{ form.submit() }}
-		</form>
+<div id="quizContainer" class="container">
+	<div id="question" class="question"></div>
+	<label class="option"><input type="radio" name="option" value="1" /> <span id="opt1"></span></label><br>
+	<label class="option"><input type="radio" name="option" value="2" /> <span id="opt2"></span></label><br>
+	<label class="option"><input type="radio" name="option" value="3" /> <span id="opt3"></span></label><br>
+	<label class="option"><input type="radio" name="option" value="4" /> <span id="opt4"></span></label><br>
+	<button id="nextButton" class="next-btn" onclick="loadNextQuestion();">Next Question</button>
+</div>
+<div id="result" style="display:none;">
+	You got <p id="result1" style="display:none;"></p>Your Overall Level: <p id="result2" style="display:none;"></p><br>
+	<div id="btnresult" class='center'>
+		<a class='button' href="{{ url_for('get_score') }}" >See result page</a>
 	</div>
-{% endblock %}
+</div>
+
+<script>
+	var questions = JSON.parse('{{  lists | tojson | safe}}')
+</script>
+<script src='{{ url_for('static', filename='/quiz-script.js') }}'></script>
+{% endblock %} 

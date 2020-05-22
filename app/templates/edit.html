@@ -41,6 +41,13 @@
                 {% endfor %}
             </p>
             <p>
+                {{ form.option4.label }}<br>
+                {{ form.option4(size=32) }}
+                {% for error in form.option4.errors %}
+                <span style="color:red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
                 {{ form.answer.label }}<br>
                 {{ form.answer(size=32) }}
                 {% for error in form.answer.errors %}

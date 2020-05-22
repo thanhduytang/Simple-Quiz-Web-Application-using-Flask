@@ -10,6 +10,9 @@ var opt3 = document.getElementById('opt3');
 var opt4 = document.getElementById('opt4');
 var nextButton = document.getElementById('nextButton');
 var resultCont = document.getElementById('result');
+var resultCont1 = document.getElementById('result1');
+var resultCont2 = document.getElementById('result2');
+var buttonResult = document.getElementById('btnresult');
 
 function loadQuestion (questionIndex) {
 	var q = questions[questionIndex];
@@ -37,14 +40,17 @@ function loadNextQuestion () {
 	}
 	if(currentQuestion == totQuestions){
 		container.style.display = 'none';
-		resultCont.style.display = '';
-
+		resultCont.style.display = 'block';
+		resultCont1.style.display = '';
+		resultCont2.style.display = '';
 		/* get overall level */
 		if(score > 100 && score <= 120){Olevel = "Sufficient";}
 		else if(score <= 100 && score >= 80){Olevel = "Medium";}
 		else {Olevel = "Insufficient"}
+		resultCont1.textContent = score;
+		resultCont2.textContent = Olevel;
+		buttonResult.style.display = display;
 
-		resultCont.textContent = ' Your Score: ' + score + 'Your Overall Level: ' + Olevel;
 		return;
 	}
 	loadQuestion(currentQuestion);

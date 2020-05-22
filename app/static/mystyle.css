@@ -36,6 +36,8 @@ hr {
     font-style: italic;
 }
 
+
+
 /* Layout */
 .row:after { /* Clear floats after the columns */
     clear: both;
@@ -107,4 +109,3 @@ a.resource:link,
 a.resource:visited {
     color: #333D46;
 }
-

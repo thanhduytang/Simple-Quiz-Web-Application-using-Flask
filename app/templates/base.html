@@ -18,10 +18,10 @@
 
         <!--Login-->
         <div class='right'>
-            <a class='resource' href="{{ url_for('index') }}" >Home</a> |
+            <a class='resource' href='{{ url_for('index') }}' >Home</a> |
             {% if current_user.is_anonymous %}
-            <a class='resource' href="{{ url_for('login') }}" >Login</a> |
-            <a class='resource' href="{{ url_for('register') }}" >Register</a>
+            <a class='resource' href='{{ url_for('login') }}' >Login</a> |
+            <a class='resource' href='{{ url_for('register') }}' >Register</a>
             {% else %}
             {% if current_user.is_admin %}
             <a class='resource' href="{{ url_for('editquestion') }}" >Edit Question | </a>

@@ -48,6 +48,9 @@ class Score(db.Model):
     def __repr__(self):
         return '{}'.format(self.score)
 
+    def is_committed(self):
+        return self.user_id is not None
+
 class QA(db.Model):
     id       = db.Column(db.Integer, primary_key = True)
     question = db.Column(db.String(256), index = True)

@@ -4,7 +4,14 @@
         <!--Content-->
         <div class='row'>
             <div class='column'>
-                {{ score }}
+                Score: {{ score }}<br>
+                Overall Level: {{ olevel }}<br>
+                {% set a = 0 %}
+                {% set b = answerlist %}
+                {% for i in range(b | length) %}
+                {% set a = i + 1 %} {{ a }}. {{ questions[i].question }}<br>
+                - {{ answerlist[i] }} <br>
+                {% endfor %}
                 <!--Button-->
                 <div class='center'><a class='button' href="{{ url_for('index') }}" >Back to Home</a></div>
             </div>

@@ -6,10 +6,8 @@
 
                 {% if current_user.scores.all() == [] %}
                         Hi, {{ current_user.username }}!
-                        Here is a platform for checking your knowledge of COVID-19
                 {% else %}
                         Welcome back {{ current_user.username }}!
-                        You have done the test
                 {% endif %} 
 
                 <!--Introduction-->
@@ -52,9 +50,7 @@
         <div class='row'>
             <!--Button-->
             {% if current_user.scores.all() == [] %}
-            <div class='center'><a class='button' href='{{ url_for('quiz') }}' >Start</a></div>
-            {% else %}
-            <div class='center'><a class='button' href='{{ url_for('result') }}'>Click Here to See Your Result</a></div>
+            <div class='center'><a class='button' href='{{ url_for('quiz') }}' >Start Quiz</a></div>
             {% endif %}
         </div>  
 {% endblock %}

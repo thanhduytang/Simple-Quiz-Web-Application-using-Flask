@@ -12,7 +12,6 @@ var nextButton = document.getElementById('nextButton');
 var resultCont = document.getElementById('result');
 var resultCont1 = document.getElementById('result1');
 var resultCont2 = document.getElementById('result2');
-var buttonResult = document.getElementById('btnresult');
 
 function loadQuestion (questionIndex) {
 	var q = questions[questionIndex];
@@ -49,11 +48,23 @@ function loadNextQuestion () {
 		else {Olevel = "Insufficient"}
 		resultCont1.textContent = score;
 		resultCont2.textContent = Olevel;
-		buttonResult.style.display = display;
-
 		return;
+		
 	}
 	loadQuestion(currentQuestion);
 }
 
 loadQuestion(currentQuestion);
+
+function do_ajax() {
+	var button_save  = document.getElementById('savescore');
+	var button_getsc = document.getElementById('getscore');
+	button_save.style.display  ='none';
+	button_getsc.style.display ='block';
+	var req = new XMLHttpRequest();
+	var x = score;
+	document.getElementsByName('secret').value = x;
+	req.open('POST', '/getscore', true);
+	req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+	req.send('score=' + document.getElementsByName('secret').value);
+  }

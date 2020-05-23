@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, abort, json, request
+from flask import render_template, flash, redirect, url_for, request, abort, json, request, jsonify
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -112,14 +112,32 @@ def quiz():
         lists.append(quest)  
     return render_template('quiz.html', lists = lists)
 
-@app.route('/result', methods=['GET','POST'])
+@app.route('/getscore', methods=['POST'])
 @login_required
 def get_score():
-    score = request.get_json()
-    score_user = Score.query.filter_by(user_id = current_user.id).first()
-    score_user = score
-    db.session.add(score_user)
-    db.session.commit()
-    scores = Score.query.filter_by(user_id=current_user.id)
-    return render_template('result.html', score=scores)
+    score = None
+    if request.method == "POST":
+        score = request.form['score']
+        newscore = Score(score = score, user_id = current_user.id)
+        db.session.add(newscore)
+        db.session.commit()
+        score = Score.query.filter_by(user_id=current_user.id).first().score
+        if score > 100 and score <= 120:
+            Olevel = "Sufficient"
+        elif score <= 100 & score >= 80:
+            Olevel = "Medium"
+        else:
+            Olevel = "Insufficient"
+        
+        olevel = Score(olevel = Olevel, user_id = current_user.id)
+        db.session.add(olevel)
+        db.session.commit()
+    return render_template('result.html')
+@app.route('/result', methods=['GET','POST'])
+@login_required
+def result():
+    score = Score.query.filter_by(user_id = current_user.id).first().score
+    olevel = Score.query.filter_by(user_id = current_user.id).first().olevel
+    return render_template('result.html', score = score)
+
     

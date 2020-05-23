@@ -98,19 +98,41 @@ def editquestion():
 @app.route('/quiz', methods=['GET', 'POST'])
 @login_required
 def quiz():
-    lists=[]
-    len_QA = len(QA.query.all())
-    for i in range(1, len_QA + 1, 1):
-        q_id = QA.query.get(i)
-        quest = {
-                'question': q_id.question,
-                'option1': q_id.option1,
-                'option2': q_id.option2,
-                'option3': q_id.option3,
-                'option4': q_id.option4,
-                'answer' : q_id.answer}
-        lists.append(quest)  
-    return render_template('quiz.html', lists = lists)
+    if Score.query.filter_by(user_id = current_user.id).first() is not None:
+        flash("You have taken the test already")
+        return redirect(url_for('index'))
+    else:
+        lists=[]
+        len_QA = len(QA.query.all())
+        for i in range(1, len_QA + 1, 1):
+            q_id = QA.query.get(i)
+            quest = {
+                    'question': q_id.question,
+                    'option1': q_id.option1,
+                    'option2': q_id.option2,
+                    'option3': q_id.option3,
+                    'option4': q_id.option4,
+                    'answer' : q_id.answer}
+            lists.append(quest)  
+        return render_template('quiz.html', lists = lists)
+
+
+@app.route('/requiz', methods=['GET', 'POST'])
+@login_required
+def requiz():
+    if Score.query.filter_by(user_id = current_user.id).first() is None:
+        flash("You haven't done the quiz before. Please start the quiz !!!")
+        return redirect(url_for('quiz'))
+    else:
+        flash('Do this quiz again !!!')
+        if Score.query.filter_by(user_id = current_user.id).first() is not None: 
+            u = Score.query.filter_by(user_id = current_user.id).first()
+            db.session.delete(u)
+            db.session.commit()
+            return redirect(url_for('quiz'))
+        else:
+            return redirect(url_for('quiz'))
+
 
 @app.route('/getscore', methods=['GET','POST'])
 @login_required
@@ -127,29 +149,31 @@ def get_score():
 @app.route('/result', methods=['GET','POST'])
 @login_required
 def result():
-    score = Score.query.filter_by(user_id = current_user.id).first().score
-    if score > 100 and score <= 120:
-        olevel = "Sufficient"
-    elif score <= 100 & score >= 80:
-        olevel = "Medium"
+    if Score.query.filter_by(user_id = current_user.id).first() is None:
+        flash("You haven't done the quiz yet !!! Please do the quiz")
+        return redirect(url_for('quiz'))
     else:
-        olevel = "Insufficient"
-    Score.query.filter_by(user_id = current_user.id).first().olevel = olevel
-    db.session.commit()
-    olevel = Score.query.filter_by(user_id = current_user.id).first().olevel
-    questions = QA.query.all()
-    answerlist= []
-    for i in range(len(questions)):
-        if questions[i].answer == 1:
-            answerlist.append(questions[i].option1)
-        elif questions[i].answer == 2:
-            answerlist.append(questions[i].option2)
-        elif questions[i].answer == 3:
-            answerlist.append(questions[i].option3)
+        score = Score.query.filter_by(user_id = current_user.id).first().score
+        if score > 100 and score <= 120:
+            olevel = "Sufficient"
+        elif score <= 100 & score >= 80:
+            olevel = "Medium"
         else:
-            answerlist.append(questions[i].option4)
-        
-
-    return render_template('result.html', score = score, olevel=olevel, answerlist = answerlist, questions = questions)
+            olevel = "Insufficient"
+        Score.query.filter_by(user_id = current_user.id).first().olevel = olevel
+        db.session.commit()
+        olevel = Score.query.filter_by(user_id = current_user.id).first().olevel
+        questions = QA.query.all()
+        answerlist= []
+        for i in range(len(questions)):
+            if questions[i].answer == 1:
+                answerlist.append(questions[i].option1)
+            elif questions[i].answer == 2:
+                answerlist.append(questions[i].option2)
+            elif questions[i].answer == 3:
+                answerlist.append(questions[i].option3)
+            else:
+                answerlist.append(questions[i].option4)
+        return render_template('result.html', score = score, olevel=olevel, answerlist = answerlist, questions = questions)
 
     

@@ -122,9 +122,9 @@ def get_score():
         db.session.add(newscore)
         db.session.commit()
         score = Score.query.filter_by(user_id=current_user.id).first().score
-        if score > 100 and score <= 120:
+        if score > 100:
             Olevel = "Sufficient"
-        elif score <= 100 & score >= 80:
+        elif score >= 80:
             Olevel = "Medium"
         else:
             Olevel = "Insufficient"

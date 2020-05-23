@@ -24,11 +24,11 @@
             <a class='resource' href='{{ url_for('register') }}' >Register</a>
             {% else %}
             {% if current_user.is_admin %}
-            <a class='resource' href="{{ url_for('editquestion') }}" >Edit Question | </a>
+            <a class='resource' href="{{ url_for('editquestion') }}" >Edit Question </a> |
             {% endif %}
-            <a class='resource' href="{{ url_for('quiz') }}" >Start Quiz| </a>
-            <a class='resource' href="{{ url_for('result') }}" >Result | </a>
-            <a class='resource' href="{{ url_for('requiz') }}" >Requiz | </a>
+            <a class='resource' href="{{ url_for('quiz') }}" >Start Quiz </a> |
+            <a class='resource' href="{{ url_for('result') }}" >Result </a> |
+            <a class='resource' href="{{ url_for('requiz') }}" >Requiz </a> |
             <a class='resource' href="{{ url_for('logout') }}" >Logout</a>
             {% endif %}
         </div>

@@ -51,6 +51,11 @@
             <!--Button-->
             {% if current_user.scores.all() == [] %}
             <div class='center'><a class='button' href='{{ url_for('quiz') }}' >Start Quiz</a></div>
+            {% else %}
+            <div class='center'>
+                <a class='button' href='{{ url_for('result') }}' >Show Your Result</a>
+                <a class='button' href='{{ url_for('requiz') }}' >Restart Quiz</a>
+            </div>
             {% endif %}
         </div>  
 {% endblock %}

@@ -4,7 +4,7 @@
         <div class='row'>
             <div class='column part-left'>
 
-                {% if current_user.scores.first.score == None %}
+                {% if current_user.scores.all() == [] %}
                         Hi, {{ current_user.username }}!
                         Here is a platform for checking your knowledge of COVID-19
                 {% else %}
@@ -49,7 +49,7 @@
             </div>
 
             <!--Button-->
-            {% if current_user.scores.first.score == None %}
+            {% if current_user.scores.all() == [] %}
             <div class='center'><a class='button' href="{{ url_for('quiz') }}" >Start</a></div>
             {% else %}
             <div class='center'><a class='button' href="{{ url_for('result') }}">Click here to see your result</a></div>

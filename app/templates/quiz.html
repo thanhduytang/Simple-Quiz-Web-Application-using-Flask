@@ -6,9 +6,10 @@
 	<label class="option"><input type="radio" name="option" value="1" /> <span id="opt1"></span></label><br>
 	<label class="option"><input type="radio" name="option" value="2" /> <span id="opt2"></span></label><br>
 	<label class="option"><input type="radio" name="option" value="3" /> <span id="opt3"></span></label><br>
-	<label class="option"><input type="radio" name="option" value="4" /> <span id="opt4"></span></label><br>
-	<button id="nextButton" class="next-btn" onclick="loadNextQuestion();">Next Question</button>
+	<label class="option"><input type="radio" name="option" value="4" /> <span id="opt4"></span></label><br><br>
+	<div class='center'><button id="nextButton" class="click next-btn" onclick="loadNextQuestion();">Next Question</button></div>
 </div>
+
 <div id="result" style="display:none;">
 	<form action="" method = "POST">
 		You got <p id="result1" style="display:none;"></p>Your Overall Level: <p id="result2" style="display:none;"></p><br>
@@ -21,6 +22,6 @@
 <script>
 	var questions = JSON.parse('{{  lists | tojson | safe}}')
 </script>
-<script src='{{ url_for('static', filename='/quiz-script.js') }}'></script>
+<script src='{{ url_for('static', filename='quiz-script.js') }}'></script>
 
 {% endblock %} 

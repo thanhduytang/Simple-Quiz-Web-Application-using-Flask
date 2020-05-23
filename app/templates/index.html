@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
         <div class='row'>
@@ -14,11 +14,11 @@
 
                 <!--Introduction-->
                 <h1>Introduction to Quiz</h1>
-                This quiz consists of 3 different parts and 12 questions which counts for 120 marks in total. 
-                Three different parts of quiz will repectively test your knowledge about COVID-19's symptoms, 
+                This quiz consists of 12 questions which counts for 120 marks in total. 
+                Three different questions of quiz will repectively test your knowledge about COVID-19's symptoms, 
                 your knowledge about how to defend corona virus and the level of your awareness to keep yourself safe from social activity.
                 <br><br>
-                By finishing the quiz, you will get a overall score as well as three individual scores for each part.
+                By finishing the quiz, you will get the overall score and answers of each question.
                 Through the results you are able to find which aspect of COVID-19 you actually need to gain more information and taking more care about it.
                 
                 <h1>Scoring Scheme</h1>
@@ -47,12 +47,14 @@
                 (document,'script','twitter-wjs');
                 </script>
             </div>
+        </div> 
 
+        <div class='row'>
             <!--Button-->
             {% if current_user.scores.all() == [] %}
-            <div class='center'><a class='button' href="{{ url_for('quiz') }}" >Start</a></div>
+            <div class='center'><a class='button' href='{{ url_for('quiz') }}' >Start</a></div>
             {% else %}
-            <div class='center'><a class='button' href="{{ url_for('result') }}">Click here to see your result</a></div>
+            <div class='center'><a class='button' href='{{ url_for('result') }}'>Click Here to See Your Result</a></div>
             {% endif %}
         </div>  
 {% endblock %}

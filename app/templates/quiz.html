@@ -1,24 +1,24 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-<div id="quizContainer" class="container">
-  <div id="question" class="question"></div>
-			<label class="option"><input type="radio" name="option" value="1" /> <span id="opt1"></span></label><br>
-			<label class="option"><input type="radio" name="option" value="2" /> <span id="opt2"></span></label><br>
-			<label class="option"><input type="radio" name="option" value="3" /> <span id="opt3"></span></label><br>
-			<label class="option"><input type="radio" name="option" value="4" /> <span id="opt4"></span></label><br>
-			<button id="nextButton" class="next-btn" onclick="loadNextQuestion();">Next Question</button>
+<div class='column'>
+	<div id='quizContainer' class='container'>
+		<div id='question' class='question'></div>
+		<label class='option'><input type='radio' name='option' value='1' /> <span id='opt1'></span></label><br>
+		<label class='option'><input type='radio' name='option' value='2' /> <span id='opt2'></span></label><br>
+		<label class='option'><input type='radio' name='option' value='3' /> <span id='opt3'></span></label><br>
+		<label class='option'><input type='radio' name='option' value='4' /> <span id='opt4'></span></label><br><br>
+		<div class='center'><button id='nextButton' class='click next-btn' onclick='loadNextQuestion();'>Next Question</button></div>
 	</div>
 
-</div>
-
-<div id="result" style="display:none;">
-	<form action="" method = "POST">
-		You got <p id="result1" style="display:none;"></p>Your Overall Level: <p id="result2" style="display:none;"></p><br>
-		<label><input name="secret" type="hidden" value="" /></label>
-	</form>
-	<button id ="savescore" class='button' onclick="do_ajax();">Click here to save your score</button>
-	<div class='center'><a id ="getscore" class='button' href="{{ url_for('result') }}" style="display:none;">Click here for detail score</button></a></div>
+	<div id='result' style='display:none;'>
+		<form action='' method = 'POST'>
+			You got <p id='result1' style='display:none;'></p>Your Overall Level: <p id='result2' style='display:none;'></p><br>
+			<label><input name='secret' type='hidden' value='' /></label>
+		</form>
+		<div class='center'><button id ='savescore' class='click' onclick='do_ajax();'>Click Here to Save Your Score</button></div>
+		<div class='center'><a id ='getscore' class='button' href='{{ url_for('result') }}' style='display:none;'>Click Here for Detail Score</button></a></div>
+	</div>
 </div>
 
 <script>

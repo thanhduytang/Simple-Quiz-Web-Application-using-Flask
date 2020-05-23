@@ -112,7 +112,7 @@ def quiz():
         lists.append(quest)  
     return render_template('quiz.html', lists = lists)
 
-@app.route('/getscore', methods=['POST'])
+@app.route('/getscore', methods=['GET','POST'])
 @login_required
 def get_score():
     score = None
@@ -122,22 +122,34 @@ def get_score():
         db.session.add(newscore)
         db.session.commit()
         score = Score.query.filter_by(user_id=current_user.id).first().score
-        if score > 100:
-            Olevel = "Sufficient"
-        elif score >= 80:
-            Olevel = "Medium"
-        else:
-            Olevel = "Insufficient"
-        
-        olevel = Score(olevel = Olevel, user_id = current_user.id)
-        db.session.add(olevel)
-        db.session.commit()
     return render_template('result.html')
+
 @app.route('/result', methods=['GET','POST'])
 @login_required
 def result():
     score = Score.query.filter_by(user_id = current_user.id).first().score
+    if score > 100 and score <= 120:
+        olevel = "Sufficient"
+    elif score <= 100 & score >= 80:
+        olevel = "Medium"
+    else:
+        olevel = "Insufficient"
+    Score.query.filter_by(user_id = current_user.id).first().olevel = olevel
+    db.session.commit()
     olevel = Score.query.filter_by(user_id = current_user.id).first().olevel
-    return render_template('result.html', score = score)
+    questions = QA.query.all()
+    answerlist= []
+    for i in range(len(questions)):
+        if questions[i].answer == 1:
+            answerlist.append(questions[i].option1)
+        elif questions[i].answer == 2:
+            answerlist.append(questions[i].option2)
+        elif questions[i].answer == 3:
+            answerlist.append(questions[i].option3)
+        else:
+            answerlist.append(questions[i].option4)
+        
+
+    return render_template('result.html', score = score, olevel=olevel, answerlist = answerlist, questions = questions)
 
     

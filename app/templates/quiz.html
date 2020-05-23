@@ -10,14 +10,17 @@
 	<button id="nextButton" class="next-btn" onclick="loadNextQuestion();">Next Question</button>
 </div>
 <div id="result" style="display:none;">
-	You got <p id="result1" style="display:none;"></p>Your Overall Level: <p id="result2" style="display:none;"></p><br>
-	<div id="btnresult" class='center'>
-		<a class='button' href="{{ url_for('get_score') }}" >See result page</a>
-	</div>
+	<form action="" method = "POST">
+		You got <p id="result1" style="display:none;"></p>Your Overall Level: <p id="result2" style="display:none;"></p><br>
+		<label><input name="secret" type="hidden" value="" /></label>
+	</form>
+	<button id ="savescore" class='button' onclick="do_ajax();">Click here to save your score</button>
+	<div class='center'><a id ="getscore" class='button' href="{{ url_for('result') }}" style="display:none;">Click here for detail score</button></a></div>
 </div>
 
 <script>
 	var questions = JSON.parse('{{  lists | tojson | safe}}')
 </script>
 <script src='{{ url_for('static', filename='/quiz-script.js') }}'></script>
+
 {% endblock %} 

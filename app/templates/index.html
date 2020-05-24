@@ -15,9 +15,9 @@
                     <div class='column part-left'>
 
                         {% if current_user.scores.all() == [] %}
-                            <p id='greeting'>Hi, {{ current_user.username }}!</p>
+                                Hi, {{ current_user.username }}!
                         {% else %}
-                            <p id='greeting'>Welcome back {{ current_user.username }}!</p>
+                                Welcome back {{ current_user.username }}!
                         {% endif %} 
 
                         <!--Introduction-->

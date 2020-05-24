@@ -3,33 +3,29 @@
 <html lang='en'>
     <head>
         <meta charset='UTF-8'>
-        <link rel='stylesheet' href='{{ url_for('static', filename='mystyle.css') }}'>
+        <link rel='stylesheet' href='{{ url_for("static", filename="mystyle.css") }}'>
         <link href='https://fonts.googleapis.com/css2?family=Gotu&display=swap' rel='stylesheet'>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
         <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>      
-        {% if title %}
-        <title>{{ title }} Quiz</title>
-        {% else %}
         <title>Covid19 Quiz</title>
-        {% endif %}
     </head>
 
     <body>
 
         <!--Login-->
         <div class='right'>
-            <a class='resource' href='{{ url_for('index') }}' >Home</a> |
+            <a class='resource' href='{{ url_for("index") }}'>Home</a> |
             {% if current_user.is_anonymous %}
-            <a class='resource' href='{{ url_for('login') }}' >Login</a> |
-            <a class='resource' href='{{ url_for('register') }}' >Register</a>
+            <a class='resource' href='{{ url_for("login") }}'>Login</a> |
+            <a class='resource' href='{{ url_for("register") }}'>Register</a>
             {% else %}
             {% if current_user.is_admin %}
-            <a class='resource' href="{{ url_for('editquestion') }}" >Edit Question </a> |
+            <a class='resource' href='{{ url_for("editquestion") }}'>Edit Question </a> |
             {% endif %}
-            <a class='resource' href="{{ url_for('quiz') }}" >Start Quiz </a> |
-            <a class='resource' href="{{ url_for('result') }}" >Result </a> |
-            <a class='resource' href="{{ url_for('requiz') }}" >Requiz </a> |
-            <a class='resource' href="{{ url_for('logout') }}" >Logout</a>
+            <a class='resource' href='{{ url_for("quiz") }}'>Start Quiz </a> |
+            <a class='resource' href='{{ url_for("result") }}'>Result </a> |
+            <a class='resource' href='{{ url_for("requiz") }}'>Requiz </a> |
+            <a class='resource' href='{{ url_for("logout") }}'>Logout</a>
             {% endif %}
         </div>
 
@@ -43,11 +39,11 @@
 
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul>
-        {% for message in messages %}
-        <li> {{ message }} </li>
-        {% endfor %}
-        </ul>
+            {% for message in messages %}
+                <ul>
+                        <li> {{ message }} </li>
+                </ul>
+            {% endfor %}
         {% endif %}
         {% endwith %}
         
@@ -73,7 +69,7 @@
             <div class='column footer'>
                 <b>Follow Us</b><br/><br/>
                 <a href='https://github.com/thanhduytang' target='_blank' title='GitHub'>
-                <img src='{{ url_for('static', filename='images/GitHub.png') }}' alt='GitHub logo'></a>
+                <img src='{{ url_for("static", filename="images/GitHub.png") }}' alt='GitHub logo'></a>
             </div>           
         </div>
     

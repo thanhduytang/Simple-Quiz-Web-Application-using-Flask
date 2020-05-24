@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <title>Covid19 Quiz</title>
+    </head>
+
+    <body>
+        {% extends 'base.html' %}
+
+        {% block content %}
+                <!--Content-->
+                <div class='column'>
+                    Score: {{ score }}<br>
+                    Overall Level: {{ olevel }}<br><br>
+                    {% set a = 0 %}
+                    {% set b = answerlist %}
+                    {% for i in range(b | length) %}
+                        <b>{% set a = i + 1 %} {{ a }}. {{ questions[i].question }}</b><br>
+                        - {{ answerlist[i] }} <br><br>
+                    {% endfor %}
+                    <div class='center'><a class='button' href='{{ url_for("index") }}' >Back to Home</a></div>
+                </div>
+        {% endblock %}
+    </body>
+</html>

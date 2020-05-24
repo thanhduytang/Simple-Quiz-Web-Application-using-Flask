@@ -1,0 +1,125 @@
+/* Basic */
+body {
+    background-color: #C4C5C7;
+    color: #333D46;
+    font-family: 'Gotu', sans-serif;
+    overflow: auto;
+}
+
+hr { 
+    border: 1px solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.twitter {
+    color: grey;
+    font-size: 80%;
+}
+
+/* Title */
+.title {
+    background-image: url(images/guide.JPG);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.title-font {
+    font-size: 500%;
+}
+
+.subtitle-font {
+    font-size: 250%;
+    font-style: italic;
+}
+
+
+/* Layout */
+.row:after { /* Clear floats after the columns */
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.column {
+    display: block;
+    float: left;
+    padding: 20px;
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.part-left {
+    width: 70%;
+}
+
+.part-right {
+    width: 20%;
+}
+
+
+.footer {
+    text-align: center;
+    width: 30%;
+}
+
+/* Buttons */
+a.button {
+    font-size: 150%;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+a.button:hover {
+    background-color: #687480;
+}
+a.button:link,
+a.button:visited {
+    color: #333D46;
+}
+
+.click {
+    background-color: transparent;
+    border: none;
+    color: #333D46;
+    cursor: pointer;
+    font-family: 'Gotu', sans-serif;
+    font-size: 150%;
+    font-weight: bold;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.click:hover {
+    background-color: #687480;
+}
+
+/* Link */
+a {
+    text-decoration: none;
+}
+
+a.underline {
+    text-decoration: underline;
+}
+
+a.resource:hover {
+    font-weight: bold;
+}
+
+a.resource:link,
+a.resource:visited {
+    color: #333D46;
+}

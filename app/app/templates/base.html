@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <link rel='stylesheet' href='{{ url_for("static", filename="mystyle.css") }}'>
+        <link href='https://fonts.googleapis.com/css2?family=Gotu&display=swap' rel='stylesheet'>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>      
+        <title>Covid19 Quiz</title>
+    </head>
+
+    <body>
+
+        <!--Login-->
+        <div class='right'>
+            <a class='resource' href='{{ url_for("index") }}'>Home</a> |
+            {% if current_user.is_anonymous %}
+            <a class='resource' href='{{ url_for("login") }}'>Login</a> |
+            <a class='resource' href='{{ url_for("register") }}'>Register</a>
+            {% else %}
+            {% if current_user.is_admin %}
+            <a class='resource' href='{{ url_for("editquestion") }}'>Edit Question </a> |
+            {% endif %}
+            <a class='resource' href='{{ url_for("quiz") }}'>Start Quiz </a> |
+            <a class='resource' href='{{ url_for("result") }}'>Result </a> |
+            <a class='resource' href='{{ url_for("requiz") }}'>Requiz </a> |
+            <a class='resource' href='{{ url_for("logout") }}'>Logout</a>
+            {% endif %}
+        </div>
+
+        <!--Title-->
+        <div class='title'>
+            <br><h1 class='title-font'>COVID-19 Survival Guide</h1>
+            <p class='subtitle-font'>Protect yourself and others - Test your knowledge of COVID-19</p>
+        </div>
+
+        <hr>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <ul>
+                        <li> {{ message }} </li>
+                </ul>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+
+        <hr>
+            
+        <!--Footer-->
+        <div class='row'>
+            <div class='column footer'>
+                <b>Contact Us</b><br/><br/>
+                Duy Tang: <a class='resource underline' href='mailto:22803018@student.uwa.edu.au'>22803018@student.uwa.edu.au</a><br/>
+                Eddie Liu: <a class='resource underline' href='mailto:22781942@student.uwa.edu.au'>22781942@student.uwa.edu.au</a><br/>
+                Jasmine Meng: <a class='resource underline' href='mailto:22665473@student.uwa.edu.au'>22665473@student.uwa.edu.au</a><br/>
+                Vian Tian: <a class='resource underline' href='mailto:22593034@student.uwa.edu.au'>22593034@student.uwa.edu.au</a><br/>
+            </div>
+            <div class='column footer'>
+                <b>Useful Links</b><br/><br/>
+                <a class='resource' href='https://covid-19.wileam.com' target='_blank' title='COVID-19 Updates'>COVID-19 Updates</a><br>
+                <a class='resource' href='https://www.who.int/news-room/campaigns/connecting-the-world-to-combat-coronavirus/healthyathome?gclid=CjwKCAjw5Ij2BRBdEiwA0Frc9fAw4ZkQjQt4A_wZnKcNEzZs2_rjvSqgCGJC0mezF05FWpv-woANvBoCxvIQAvD_BwE' target='_blank' title='Lockdown Tips'>Lockdown Tips</a><br>
+                <a class='resource' href='https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-current-situation-and-case-numbers' target='_blank' title='Tracking COVID-19 Case'>Tracking COVID-19 Case</a><br/>
+            </div>
+            <div class='column footer'>
+                <b>Follow Us</b><br/><br/>
+                <a href='https://github.com/thanhduytang' target='_blank' title='GitHub'>
+                <img src='{{ url_for("static", filename="images/GitHub.png") }}' alt='GitHub logo'></a>
+            </div>           
+        </div>
+    
+    </body>
+</html>

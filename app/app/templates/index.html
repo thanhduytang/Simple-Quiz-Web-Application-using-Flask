@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <title>Covid19 Quiz</title>
+    </head>
+
+    <body>
+        {% extends 'base.html' %}
+
+        {% block content %}
+                <div class='row'>
+                    <div class='column part-left'>
+
+                        {% if current_user.scores.all() == [] %}
+                            <p id='greeting'>Hi, {{ current_user.username }}!</p>
+                        {% else %}
+                            <p id='greeting'>Welcome back {{ current_user.username }}!</p>
+                        {% endif %} 
+
+                        <!--Introduction-->
+                        <h1>Introduction to Quiz</h1>
+                        This quiz consists of 12 questions which counts for 120 marks in total. 
+                        Three different questions of quiz will repectively test your knowledge about COVID-19's symptoms, 
+                        your knowledge about how to defend corona virus and the level of your awareness to keep yourself safe from social activity.
+                        <br><br>
+                        By finishing the quiz, you will get the overall score and answers of each question.
+                        Through the results you are able to find which aspect of COVID-19 you actually need to gain more information and taking more care about it.
+                        
+                        <h1>Scoring Scheme</h1>
+                        <ul>
+                            <li>'Sufficient' level indicates you have been fully awared of every aspect of COVID-19.</li>
+                            <li>'Medium' level means you have some awarenedd of COVID-19 but still need strengthen it to better protect yourself from potential risks.</li>
+                            <li>'Insufficient' level suggests that you may not fully aware the serious of corona virus and may need to learn more about COVID-19 in order to keep yourself safe.</li>
+                        </ul>
+                                More external resources and websites which can help you strengthen your awareness or knowledge of COVID-19 can be found on the bottom part of the result page. 
+                    </div>
+
+                    <!--Twitter-->
+                    <div class='column part-right'>
+                        <p class='twitter'>*COVID19 Australia Tweet</p>
+                        <a class='twitter-timeline' href='https://twitter.com/covid_australia' data-widget-id='717003219768107008'>Tweets by @COVID19 Australia</a>
+                        <script>
+                        !function(d,s,id){ 
+                            var js,fjs=d.getElementsByTagName(s)[0], p=/^http:/.test(d.location)?'http':'https';
+                            if (!d.getElementById(id)){ 
+                                js=d.createElement(s);
+                                js.id=id;
+                                js.src=p+'://platform.twitter.com/widgets.js';
+                                fjs.parentNode.insertBefore(js,fjs);
+                            }
+                        }
+                        (document,'script','twitter-wjs');
+                        </script>
+                    </div>
+                </div> 
+
+                <div class='row'>
+                    <!--Button-->
+                    {% if current_user.scores.all() == [] %}
+                    <div class='center'><a class='button' href='{{ url_for("quiz") }}'>Start Quiz</a></div>
+                    {% else %}
+                    <div class='center'>
+                        <a class='button' href='{{ url_for("result") }}'>Show Your Result</a>
+                        <a class='button' href='{{ url_for("requiz") }}'>Restart Quiz</a>
+                    </div>
+                    {% endif %}
+                </div>  
+        {% endblock %}
+    </body>
+</html>

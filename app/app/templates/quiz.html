@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <title>Covid19 Quiz</title>
+    </head>
+
+    <body>
+		{% extends 'base.html' %}
+
+		{% block content %}
+		<div class='column'>
+			<div id='quizContainer' class='container'>
+				<div id='question' class='question'></div>
+				<label class='option'><input type='radio' name='option' value='1' /> <span id='opt1'></span></label><br>
+				<label class='option'><input type='radio' name='option' value='2' /> <span id='opt2'></span></label><br>
+				<label class='option'><input type='radio' name='option' value='3' /> <span id='opt3'></span></label><br>
+				<label class='option'><input type='radio' name='option' value='4' /> <span id='opt4'></span></label><br><br>
+				<div class='center'><button id='nextButton' class='click next-btn' onclick='loadNextQuestion();'>Next Question</button></div>
+			</div>
+
+			<div id='result' style='display:none;'>
+				<form method = 'POST'>
+					<div style='font-size: 250%;'>Congratulation!</div>
+					<div style='padding: 50px;'>You have done the COVID-19 Quiz</div>
+					<div class='center'>
+						You got <p id='result1' style='display:none;'></p>Your Overall Level: <p id='result2' style='display:none;'></p><br>
+						<label><input name='secret' type='hidden' value='' /></label>
+					</div>
+				</form>
+				<div class='center'><button id ='savescore' class='click' onclick='do_ajax();'>Click Here to Save Your Score</button></div>
+				<div class='center'><a id ='getscore' class='button' href='{{ url_for("result") }}' style='display:none;'>Click Here for Answers</a></div>
+			</div>
+		</div>
+
+		<script>
+			var questions = JSON.parse('{{  lists | tojson | safe}}')
+		</script>
+		<script src='{{ url_for("static", filename="quiz-script.js") }}'></script>
+
+		{% endblock %} 
+    </body>
+</html>

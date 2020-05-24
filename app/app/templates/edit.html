@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <title>Covid19 Quiz</title>
+    </head>
+
+    <body>
+        {% extends 'base.html' %}
+
+        {% block content %}
+            <div class='column'>
+                <h1>Edit Question</h1>
+                <form method='post'>
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {{ form.question_num.label }}<br>
+                        {{ form.question_num(size=32) }}
+                        {% for error in form.question_num.errors %}
+                            <span style='color:red;'>[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.question.label }}<br>
+                        {{ form.question(size=32) }}
+                        {% for error in form.question.errors %}
+                            <span style='color:red;'>[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.option1.label }}<br>
+                        {{ form.option1(size=32) }}
+                        {% for error in form.option1.errors %}
+                            <span style='color:red;'>[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.option2.label }}<br>
+                        {{ form.option2(size=32) }}
+                        {% for error in form.option2.errors %}
+                            <span style='color:red;'>[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.option3.label }}<br>
+                        {{ form.option3(size=32) }}
+                        {% for error in form.option3.errors %}
+                            <span style='color:red;'>[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.option4.label }}<br>
+                        {{ form.option4(size=32) }}
+                        {% for error in form.option4.errors %}
+                            <span style='color:red;'>[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.answer.label }}<br>
+                        {{ form.answer(size=32) }}
+                        {% for error in form.answer.errors %}
+                            <span style='color:red;'>[{{ error }}]</span>
+                        {% endfor %}
+                    </p>
+                    <p>{{ form.submit() }}</p>
+                </form>
+            </div>
+        {% endblock %}
+    </body>
+</html>

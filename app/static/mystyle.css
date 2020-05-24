@@ -37,7 +37,6 @@ hr {
 }
 
 
-
 /* Layout */
 .row:after { /* Clear floats after the columns */
     clear: both;
@@ -92,8 +91,10 @@ a.button:visited {
 }
 
 .click {
+    background-color: transparent;
     border: none;
     color: #333D46;
+    cursor: pointer;
     font-family: 'Gotu', sans-serif;
     font-size: 150%;
     font-weight: bold;

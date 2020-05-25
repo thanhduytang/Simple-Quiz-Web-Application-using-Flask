@@ -33,6 +33,16 @@ To run the app:
 
 To stop the app:
 `$deactivate`
+## Database
+
+We have put 12 questions in the database. We have one account which is administrator.
+username: duy
+password:cat
+
+We also have account which is a normal account.
+username:huy
+password:cat
+
 
 ## Installing
 

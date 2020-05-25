@@ -11,11 +11,12 @@ Vian Tian 22593034<br>
 This project designs and builds a web page of Covid-19 quiz. The purpose of this quiz is trying to help the users to improve their awareness of Covid-19. Users need to register or login before taking the quiz. By taking the quiz, users can get a feedback which consists the overall score and suggestions based on the final result.
 
 ## Prerequisites
+
 This application will be run under python(python3) with virtual enviroment, flask, and sqlite. Follow requirement.txt to set up the virtual enviroment and download the required packages.
 
 ## Getting Started
 
-Install virtual envinronment in bash:
+Install virtual envinronment in linux:
 `python -m venv venv` 
 
 To open Visual Studio Code:
@@ -34,6 +35,7 @@ To stop the app:
 `$deactivate`
 
 ## Installing
+
 1. Set up a virtual environment:
  - use pip or another package manager to install virtualenv package `pip install virtualenv`
  - start the provided virtual environment
@@ -41,11 +43,12 @@ To stop the app:
  - This should include flask and all the required packages
 2. Install sqlite
  - [Windows instructions](http://www.sqlitetutorial.net/download-install-sqlite/)
- - In \*nix, `sudo apt-get install sqlite`
+ - In linux, `sudo apt-get install sqlite`
 3. Build the database: `flask db init`
 4. `flask run`
 
 ## Running the test
+
 Both unit test and system test require to set the TestConfig correctly to initialize and use test.db
 
 Running unit test by python3 -m tests.unittest : testing the whether password field works correctly, testing the relationship between tables and if they can be successfully committed.
@@ -62,6 +65,7 @@ Please read [gitlog.md]() for details on our code of conduct, and the process fo
 * **EDDIE LIU**
 * **Jasmine Meng**
 * **Vian Tian**
+
 ## Deployment
 
 Via localhost

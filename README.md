@@ -35,13 +35,21 @@ To stop the app:
 `$deactivate`
 ## Database
 
-We have put 12 questions in the database. We have one account which is administrator.
-username: duy
-password:cat
+We have put 12 questions in the database. To set as administrator, the following python code is required. <br>
+`from app import db` <br>
+`from app.models import User`  <br>
+`u = User.query.get(1)`  <br>
+`u.is_admin = True`  <br>
+`db.session.commit()`  <br>
 
-We also have account which is a normal account.
-username:huy
-password:cat
+
+We have one account which is administrator. <br>
+username: duy <br>
+password:cat <br>
+
+We also have account which is a normal account. <br>
+username:huy <br>
+password:cat <br>
 
 
 ## Installing
